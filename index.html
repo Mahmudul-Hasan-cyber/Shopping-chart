@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minus1" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="item1" type="text" class="form-control text-center" value="1" readonly>
+                           <button id="plus1" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$<span id="total-value">1219</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="item" type="text" class="form-control text-center" value="1" readonly>
+                           <button id="plus" class="btn btn-default"><i class="fas fa-plus" ></i></button>
+
+                        </div>
+                        <h5>$<span id="total-value1">59</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$ <span id="subtotal">1278</span></h5>
+                        <h5>$0</h5>
+                        <h5>$<span id="total">1278</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <script>
+      //Adding cart item
+      const plus1Btn=document.getElementById("plus1");
+      plus1Btn.addEventListener("click", function(){
+         const item1=document.getElementById("item1").value;
+         const totalValue=document.getElementById("total-value").innerText;
+         
+//Subtotal 
+const subtotal=document.getElementById("subtotal").innerText;
+var subtotalNum=parseFloat(subtotal);
+//total
+const total=document.getElementById("total").innerText;
+var totalNum=parseFloat(total);
+         var totalValueNum=parseFloat(totalValue);
+         var itemNum=parseFloat(item1);
+         if(itemNum==0){
+            document.getElementById("minus1").disabled=false;
+         }
+         var itemNum=itemNum+1;
+         var totalValue2=1219*itemNum;
+//subtotal value
+subtotalNum=1219+subtotalNum;
+//total value
+totalNum=1219+totalNum;
+         document.getElementById("item1").value=itemNum;
+         document.getElementById("total-value").innerText=totalValue2;
+         document.getElementById("subtotal").innerText=subtotalNum;
+         document.getElementById("total").innerText=totalNum;
+      })
+      //Removing cart item
+      const minus1Btn=document.getElementById("minus1");
+      minus1Btn.addEventListener("click", function(){
+         const item1=document.getElementById("item1").value;
+         const totalValue=document.getElementById("total-value").innerText;
+         
+//subtotal
+const subtotal=document.getElementById("subtotal").innerText;
+var subtotalNum=parseFloat(subtotal);
+//total
+const total=document.getElementById("total").innerText;
+var totalNum=parseFloat(total);
+         var totalValueNum=parseFloat(totalValue);
+         var itemNum=parseFloat(item1);  
+         if(itemNum<2){
+            document.getElementById("minus1").disabled=true;
+         } 
+         var itemNum=itemNum-1;
+         var totalValue2=totalValueNum-1219;
+
+         
+//subtotal value
+subtotalNum=subtotalNum-1219;
+//total value
+totalNum=totalNum-1219;
+         document.getElementById("item1").value=itemNum;
+         document.getElementById("total-value").innerText=totalValue2;
+         document.getElementById("subtotal").innerText=subtotalNum;
+         document.getElementById("total").innerText=totalNum;
+      })
+
+
+//another cart
+//Adding cart
+const plusBtn=document.getElementById("plus");
+      plusBtn.addEventListener("click", function(){
+         const item=document.getElementById("item").value;
+         const totalValue1=document.getElementById("total-value1").innerText;
+//Subtotal 
+const subtotal=document.getElementById("subtotal").innerText;
+var subtotalNum=parseFloat(subtotal);
+//total
+const total=document.getElementById("total").innerText;
+var totalNum=parseFloat(total);
+
+         var totalValueNum=parseFloat(totalValue1);
+         var itemNum=parseFloat(item);
+         if(itemNum==0){
+            document.getElementById("minus").disabled=false;
+         }
+         var itemNum=itemNum+1;
+         var totalValue2=59*itemNum;
+
+//subtotal value
+ subtotalNum=59+subtotalNum;
+//total value
+totalNum=59+totalNum;
+         document.getElementById("item").value=itemNum;
+         document.getElementById("total-value1").innerText=totalValue2;
+         document.getElementById("subtotal").innerText=subtotalNum;
+         document.getElementById("total").innerText=totalNum;
+
+      })
+      //Removing cart item
+      const minusBtn=document.getElementById("minus");
+      minusBtn.addEventListener("click", function(){
+         const item=document.getElementById("item").value;
+         const totalValue1=document.getElementById("total-value1").innerText;
+//subtotal
+const subtotal=document.getElementById("subtotal").innerText;
+var subtotalNum=parseFloat(subtotal);
+//total
+const total=document.getElementById("total").innerText;
+var totalNum=parseFloat(total);
+
+         var totalValueNum=parseFloat(totalValue1);
+         var itemNum=parseFloat(item);
+         if(itemNum<2){
+            document.getElementById("minus").disabled=true;
+         } 
+         var itemNum=itemNum-1;
+         var totalValue2=totalValueNum-59;
+//subtotal value
+subtotalNum=subtotalNum-59;
+//total value
+totalNum=totalNum-59;
+         document.getElementById("item").value=itemNum;
+         document.getElementById("total-value1").innerText=totalValue2;
+         document.getElementById("subtotal").innerText=subtotalNum;
+         document.getElementById("total").innerText=totalNum;
+      })
+
+   
+  
+
+
+   </script>
+</body>
+
+</html>
